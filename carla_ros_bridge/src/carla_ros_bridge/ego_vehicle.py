@@ -187,7 +187,7 @@ class EgoVehicle(Vehicle):
         """
         if not self.vehicle_control_override:
             angular_velocity = Vector3D()
-            angular_velocity.z = math.degrees(twist.angular.z)
+            angular_velocity.z = math.degrees(-twist.angular.z)#Matching the ROS and CARLA conventions
 
             rotation_matrix = transforms.carla_rotation_to_numpy_rotation_matrix(
                 self.carla_actor.get_transform().rotation)
