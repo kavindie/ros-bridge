@@ -84,7 +84,7 @@ class CarlaRosBridge(object):
         rospy.loginfo("synchronous_mode: {}".format(self.parameters["synchronous_mode"]))
         self.carla_settings.synchronous_mode = self.parameters["synchronous_mode"]
         rospy.loginfo("fixed_delta_seconds: {}".format(self.parameters["fixed_delta_seconds"]))
-        self.carla_settings.fixed_delta_seconds = self.parameters["fixed_delta_seconds"]
+        self.carla_settings.fixed_delta_seconds = self.parameters["fixed_delta_seconds"] or None  # translate 0 to None
         carla_world.apply_settings(self.carla_settings)
 
         self.comm = Communication()
